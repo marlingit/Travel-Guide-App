@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: 1 179 228;
+    --color-secondary: 0 112 153;
+    --color-text: 0, 0, 0, 1;
+    --color-text-light: 102, 102, 102, 1;
+    --color-background: #fff;
+
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    color-scheme: light dark;
+
+    color: rgba(var(--color-text));
+    background-color: var(--color-background);
+  }
+
+  .dark {
+    --color-text: 255, 255, 255, 0.87;
+    --color-text-light: 255, 255, 255, 0.6;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    display: flex;
+    min-width: 320px;
+    min-height: 100vh;
+  }
+
+  #root {
+    max-width: 1280px;
+    width: 100%;
+  }
+}
+
+@layer utilities {
+  .material-symbols-rounded.text-lg {
+    font-size: 1.125rem;
+  }
+
+  .material-symbols-rounded.text-xl {
+    font-size: 1.25rem;
+  }
+
+  .material-symbols-rounded.text-2xl {
+    font-size: 1.5rem;
+  }
+
+  .material-symbols-rounded.text-3xl {
+    font-size: 1.875rem;
+  }
+
+  .material-symbols-rounded.text-4xl {
+    font-size: 2.25rem;
+  }
+
+  .material-symbols-rounded.text-5xl {
+    font-size: 3rem;
+  }
+
+  #sidebar.is-close {
+    @apply hidden;
+  }
+
+  #sidebar.is-open {
+    @apply flex;
+  }
+
+  #sidebar.is-open.hidden {
+    display: none;
+  }
+}
