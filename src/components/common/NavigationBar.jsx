@@ -79,11 +79,11 @@ export const NavigationBar = () => {
   return (
     <header role="banner">
       <nav
-        className="sticky z-50 h-14 w-full md:h-20"
+        className="sticky z-50 h-14 md:h-20 w-full"
         role="navigation"
         aria-label="Primary Navigation"
       >
-        <div className="mx-auto flex h-full justify-between px-[4vw]">
+        <div className="mx-auto flex h-full justify-between px-[4vw] max-w-7xl">
           <div className="flex items-center">
             <Logo />
           </div>
