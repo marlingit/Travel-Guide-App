@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "@/assets/logo.svg";
 import { Button } from "@/components/ui/button";
+import { LinkButton } from "@/components/ui/link-button";
 import "material-symbols";
 
 const Logo = () => {
@@ -22,6 +23,7 @@ const Sidebar = ({ navigationList, onClick }) => {
       aria-label="Primary Navigation"
     >
       <div className="m-0 flex h-14 items-center justify-between p-4">
+        {/* TODO: Allow click of logo to close sidebar */}
         <Logo />
         <Button
           sr="Close Sidebar"
@@ -34,7 +36,7 @@ const Sidebar = ({ navigationList, onClick }) => {
         <ul className="text-text m-0 w-full space-y-4 pt-4 text-lg font-semibold tracking-wide">
           {navigationList.map((item) => (
             <li key={item.to} className="hover:text-primary">
-              <Link to={item.to}>{item.name}</Link>
+              <Link to={item.to} onClick={onClick}>{item.name}</Link>
             </li>
           ))}
         </ul>
@@ -79,11 +81,11 @@ export const NavigationBar = () => {
   return (
     <header role="banner">
       <nav
-        className="sticky z-50 h-14 md:h-20 w-full"
+        className="sticky z-50 h-14 w-full md:h-20"
         role="navigation"
         aria-label="Primary Navigation"
       >
-        <div className="mx-auto flex h-full justify-between px-[4vw] max-w-7xl">
+        <div className="mx-auto flex h-full max-w-7xl justify-between px-[4vw]">
           <div className="flex items-center">
             <Logo />
           </div>
@@ -91,12 +93,7 @@ export const NavigationBar = () => {
             <ul className="my-4 flex space-x-4">
               {navigation.map((item) => (
                 <li key={item.to}>
-                  <Link
-                    to={item.to}
-                    className="bg-primary border-primary hover:shadow-primary/50 rounded-full border px-4 py-2 font-semibold text-white hover:shadow-lg"
-                  >
-                    {item.name}
-                  </Link>
+                  <LinkButton to={item.to}>{item.name}</LinkButton>
                 </li>
               ))}
             </ul>

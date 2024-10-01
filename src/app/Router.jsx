@@ -1,6 +1,7 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import { LandingRoute } from "./routes/Landing";
 import { PlacesRoute } from "./routes/Places";
+import { ImageModal } from "./routes/image-modal/ImageModal";
 import { AttractionsRoute } from "./routes/Attractions";
 import { CountriesRoute } from "./routes/Countries";
 import { ActivitiesRoute } from "./routes/Activities";
@@ -11,64 +12,45 @@ import { NavigationBar } from "@/components/common";
 export const AppRouter = () => {
   const router = createBrowserRouter([
     {
-      path: "/",
       element: (
         <>
           <NavigationBar />
-          <LandingRoute />
+          <Outlet />
         </>
       ),
-      errorElement: (
-        <>
-          <NavigationBar />
-          <NotFoundRoute />
-        </>
-      ),
-    },
-    {
-      path: "/places",
-      element: (
-        <>
-          <NavigationBar />
-          <PlacesRoute />
-        </>
-      ),
-    },
-    {
-      path: "/attractions",
-      element: (
-        <>
-          <NavigationBar />
-          <AttractionsRoute />
-        </>
-      ),
-    },
-    {
-      path: "/countries",
-      element: (
-        <>
-          <NavigationBar />
-          <CountriesRoute />
-        </>
-      ),
-    },
-    {
-      path: "/activities",
-      element: (
-        <>
-          <NavigationBar />
-          <ActivitiesRoute />
-        </>
-      ),
-    },
-    {
-      path: "/beaches",
-      element: (
-        <>
-          <NavigationBar />
-          <BeachesRoute />
-        </>
-      ),
+      children: [
+        {
+          path: "/",
+          Component: LandingRoute,
+          ErrorBoundary: NotFoundRoute,
+        },
+        {
+          path: "/places",
+          Component: PlacesRoute,
+          children: [
+            {
+              path: "/details/:id",
+              Component: ImageModal,
+            },
+          ],
+        },
+        {
+          path: "/attractions",
+          Component: AttractionsRoute,
+        },
+        {
+          path: "/countries",
+          Component: CountriesRoute,
+        },
+        {
+          path: "/activities",
+          Component: ActivitiesRoute,
+        },
+        {
+          path: "/beaches",
+          Component: BeachesRoute,
+        },
+      ],
     },
   ]);
 
