@@ -2,6 +2,7 @@ import { GridLayout } from "@/components/layouts";
 import { Card } from "@/components/ui/card";
 import placesArray from "@/data/places-data.json";
 import placeImages from "@/assets/place-images";
+import { Outlet } from "react-router-dom";
 
 export const PlacesRoute = () => {
   return (
@@ -27,6 +28,7 @@ export const PlacesRoute = () => {
           </GridLayout>
         </div>
       </section>
+      <Outlet />
     </main>
   );
 };

@@ -1,7 +1,7 @@
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import { LandingRoute } from "./routes/Landing";
 import { PlacesRoute } from "./routes/Places";
-import { ImageModal } from "./routes/image-modal/ImageModal";
+import { Details } from "./routes/places-details/Details";
 import { AttractionsRoute } from "./routes/Attractions";
 import { CountriesRoute } from "./routes/Countries";
 import { ActivitiesRoute } from "./routes/Activities";
@@ -30,7 +30,7 @@ export const AppRouter = () => {
           children: [
             {
               path: "details/:id",
-              Component: ImageModal,
+              Component: Details,
             },
           ],
         },

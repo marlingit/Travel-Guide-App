@@ -4,7 +4,7 @@ import { LinkButton } from "@/components/ui/link-button";
 export const LandingRoute = () => {
   return (
     <main role="main" className="space-y-16">
-      <section className="pt-4">
+      <section className="pt-[96px]">
         <div className="mx-auto flex max-w-7xl flex-col space-y-4 px-[4vw] lg:items-center">
           <header className="flex flex-col items-center justify-center bg-cover bg-center" style={{backgroundImage: `url(${landingImg})`}}>
             <div className="grid grid-cols-1 lg:grid-cols-3 px-[3vw] text-white backdrop-blur backdrop-brightness-75 mx-8 lg:mx-36 my-16 py-6">
