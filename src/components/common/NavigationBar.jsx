@@ -81,7 +81,7 @@ export const NavigationBar = () => {
   return (
     <header role="banner">
       <nav
-        className="sticky z-50 h-14 w-full md:h-20"
+        className="fixed z-50 h-14 w-full md:h-20 bg-white shadow-md"
         role="navigation"
         aria-label="Primary Navigation"
       >

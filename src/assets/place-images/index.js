@@ -14,12 +14,13 @@ import Phuket from './Phuket.jpg';
 import Rome from './Rome.jpg';
 import SanFrancisco from './SanFrancisco.jpg';
 import SouthIsland from './SouthIsland.jpg';
+import Sydney from './Sydney.jpg';
 import Tahiti from './Tahiti.jpg';
 import Yellowstone from './Yellowstone.jpg';
 import Yosemite from './Yosemite.jpg';
 
 
-export const placeImages = {
+const placeImages = {
   "Amsterdam": Amsterdam,
   "Barcelona": Barcelona,
   "BoraBora": BoraBora,
@@ -41,3 +42,5 @@ export const placeImages = {
   "Yellowstone": Yellowstone,
   "Yosemite": Yosemite,
 };
+
+export default placeImages;

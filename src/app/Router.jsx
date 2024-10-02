@@ -29,7 +29,7 @@ export const AppRouter = () => {
           Component: PlacesRoute,
           children: [
             {
-              path: "/details/:id",
+              path: "details/:id",
               Component: ImageModal,
             },
           ],
