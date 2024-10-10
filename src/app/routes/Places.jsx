@@ -2,9 +2,16 @@ import { GridLayout } from "@/components/layouts";
 import { Card } from "@/components/ui/card";
 import placesArray from "@/data/places-data.json";
 import placeImages from "@/assets/place-images";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 export const PlacesRoute = () => {
+
+  const navigate = useNavigate();
+
+  const handleCardClick = (id) => {
+    navigate(`details/${id}`, { state: { from: "places" } });
+  }
+
   return (
     <main role="main">
       <section className="pt-[96px]">
@@ -23,7 +30,7 @@ export const PlacesRoute = () => {
         <div className="mx-auto max-w-7xl px-[4vw]">
           <GridLayout>
             {placesArray.map((place) => (
-              <Card key={place.id} title={place.placeName} image={placeImages[place.photoFilename]} description={place.countryName} />
+              <Card key={place.id} title={place.placeName} image={placeImages[place.photoFilename]} description={place.countryName} onClick={() => handleCardClick(place.id)} />
             ))}
           </GridLayout>
         </div>
