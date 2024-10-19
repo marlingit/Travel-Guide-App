@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/logo.svg";
 import { Button } from "@/components/ui/button";
 import { LinkButton } from "@/components/ui/link-button";
@@ -15,6 +15,10 @@ const Logo = () => {
 };
 
 const Sidebar = ({ navigationList, onClick }) => {
+  const location = useLocation();
+  useEffect(() => {
+    onClick();
+  }, [location]);
   return (
     <aside
       id="sidebar"
@@ -23,7 +27,6 @@ const Sidebar = ({ navigationList, onClick }) => {
       aria-label="Primary Navigation"
     >
       <div className="m-0 flex h-14 items-center justify-between p-4">
-        {/* TODO: Allow click of logo to close sidebar */}
         <Logo />
         <Button
           sr="Close Sidebar"
@@ -36,7 +39,7 @@ const Sidebar = ({ navigationList, onClick }) => {
         <ul className="text-text m-0 w-full space-y-4 pt-4 text-lg font-semibold tracking-wide">
           {navigationList.map((item) => (
             <li key={item.to} className="hover:text-primary">
-              <Link to={item.to} onClick={onClick}>{item.name}</Link>
+              <Link to={item.to}>{item.name}</Link>
             </li>
           ))}
         </ul>
@@ -46,19 +49,17 @@ const Sidebar = ({ navigationList, onClick }) => {
 };
 
 export const NavigationBar = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-    console.log(isSidebarOpen);
-    if (isSidebarOpen) {
-      document.getElementById("sidebar").classList.remove("is-open");
-      document.getElementById("sidebar").classList.add("is-close");
-    } else {
-      document.getElementById("sidebar").classList.remove("is-close");
-      document.getElementById("sidebar").classList.add("is-open");
-    }
-  };
+  const openSidebar = () => {
+    document.getElementById("sidebar").classList.remove("is-close");
+    document.getElementById("sidebar").classList.add("is-open");
+  }
+
+  const closeSidebar = () => {
+    document.getElementById("sidebar").classList.remove("is-open");
+    document.getElementById("sidebar").classList.add("is-close");
+  }
+
   const navigation = [
     {
       name: "Places",
@@ -75,6 +76,10 @@ export const NavigationBar = () => {
     {
       name: "Activities",
       to: "/activities",
+    },
+    {
+      name: "Beaches",
+      to: "/beaches",
     },
   ];
 
@@ -99,11 +104,11 @@ export const NavigationBar = () => {
             </ul>
           </nav>
           <div className="flex w-full items-center justify-end lg:hidden">
-            <Button sr="Open Sidebar" symbol="menu" onClick={toggleSidebar} />
+            <Button sr="Open Sidebar" symbol="menu" onClick={openSidebar} />
           </div>
         </div>
       </nav>
-      <Sidebar navigationList={navigation} onClick={toggleSidebar} />
+      <Sidebar navigationList={navigation} onClick={closeSidebar} />
     </header>
   );
 };
