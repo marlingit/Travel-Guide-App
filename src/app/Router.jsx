@@ -12,20 +12,15 @@ import { NavigationBar } from "@/components/common";
 export const AppRouter = () => {
   const router = createBrowserRouter([
     {
-      element: (
-        <>
-          <NavigationBar />
-          <Outlet />
-        </>
-      ),
+      path: "/",
+      Component: NavigationBar,
       children: [
         {
-          path: "/",
+          index: true,
           Component: LandingRoute,
-          ErrorBoundary: NotFoundRoute,
         },
         {
-          path: "/places",
+          path: "places",
           Component: PlacesRoute,
           children: [
             {
@@ -35,21 +30,39 @@ export const AppRouter = () => {
           ],
         },
         {
-          path: "/attractions",
+          path: "attractions",
           Component: AttractionsRoute,
+          children: [
+            {
+              path: "survey",
+              Component: () => <div>Survey</div>,
+              children: [
+                {
+                  path: ":question",
+                },
+                {
+                  path: "results",
+                },
+              ],
+            },
+          ],
         },
         {
-          path: "/countries",
+          path: "countries",
           Component: CountriesRoute,
         },
         {
-          path: "/activities",
+          path: "activities",
           Component: ActivitiesRoute,
         },
         {
-          path: "/beaches",
+          path: "beaches",
           Component: BeachesRoute,
         },
+        {
+          path: "*",
+          Component: NotFoundRoute,
+        }
       ],
     },
   ]);

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import logo from "@/assets/logo.svg";
 import { Button } from "@/components/ui/button";
 import { LinkButton } from "@/components/ui/link-button";
@@ -84,6 +84,7 @@ export const NavigationBar = () => {
   ];
 
   return (
+    <>
     <header role="banner">
       <nav
         className="fixed z-50 h-14 w-full md:h-20 bg-white shadow-md"
@@ -110,5 +111,7 @@ export const NavigationBar = () => {
       </nav>
       <Sidebar navigationList={navigation} onClick={closeSidebar} />
     </header>
+    <Outlet />
+    </>
   );
 };
