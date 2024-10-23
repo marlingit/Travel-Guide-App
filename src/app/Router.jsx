@@ -32,20 +32,6 @@ export const AppRouter = () => {
         {
           path: "attractions",
           Component: AttractionsRoute,
-          children: [
-            {
-              path: "survey",
-              Component: () => <div>Survey</div>,
-              children: [
-                {
-                  path: ":question",
-                },
-                {
-                  path: "results",
-                },
-              ],
-            },
-          ],
         },
         {
           path: "countries",
@@ -63,6 +49,18 @@ export const AppRouter = () => {
           path: "*",
           Component: NotFoundRoute,
         }
+      ],
+    },
+    {
+      path: "/attractions/survey",
+      Component: () => <div>Survey</div>,
+      children: [
+        {
+          path: ":question",
+        },
+        {
+          path: "results",
+        },
       ],
     },
   ]);
