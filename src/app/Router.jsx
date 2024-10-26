@@ -8,6 +8,7 @@ import { ActivitiesRoute } from "./routes/Activities";
 import { BeachesRoute } from "./routes/Beaches";
 import { NotFoundRoute } from "./routes/NotFound";
 import { NavigationBar } from "@/components/common";
+import { SurveyLayout } from "@/components/layouts";
 
 export const AppRouter = () => {
   const router = createBrowserRouter([
@@ -53,7 +54,7 @@ export const AppRouter = () => {
     },
     {
       path: "/attractions/survey",
-      Component: () => <div>Survey</div>,
+      Component: SurveyLayout,
       children: [
         {
           path: ":question",
@@ -67,3 +68,4 @@ export const AppRouter = () => {
 
   return <RouterProvider router={router} />;
 };
+r
