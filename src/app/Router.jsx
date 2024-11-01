@@ -7,6 +7,7 @@ import { CountriesRoute } from "./routes/Countries";
 import { ActivitiesRoute } from "./routes/Activities";
 import { BeachesRoute } from "./routes/Beaches";
 import { NotFoundRoute } from "./routes/NotFound";
+import { Questions } from "./routes/Questions";
 import { NavigationBar } from "@/components/common";
 import { SurveyLayout } from "@/components/layouts";
 
@@ -53,14 +54,14 @@ export const AppRouter = () => {
       ],
     },
     {
-      path: "/attractions/survey",
       Component: SurveyLayout,
       children: [
         {
-          path: ":question",
+          path: "/attractions/survey/:question",
+          Component: Questions,
         },
         {
-          path: "results",
+          path: "/attractions/survey/results",
         },
       ],
     },
@@ -68,4 +69,3 @@ export const AppRouter = () => {
 
   return <RouterProvider router={router} />;
 };
-r
