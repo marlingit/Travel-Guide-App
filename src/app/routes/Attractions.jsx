@@ -21,7 +21,7 @@ export const AttractionsRoute = () => {
             <p className="mb-12 text-center text-clamp-lg-3xl font-semibold text-text-light z-10">
               Best Travel Attractions in the World!
             </p>
-            <LinkButton to="survey/1" className="px-14 py-5 mx-auto text-nowrap z-10">
+            <LinkButton to="survey" className="px-14 py-5 mx-auto text-nowrap z-10">
               Start Survey
             </LinkButton>
           </div>

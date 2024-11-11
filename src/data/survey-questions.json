@@ -1,0 +1,11 @@
+[
+  {
+    "id": 1,
+    "question": "Which of the following vacation spots do you like the most?",
+    "options": [
+      {"id": 1, "text": "Colosseum"},
+      {"id": 2, "text": "Eiffel Tower"},
+      {"id": 3, "text": "Statue of Liberty"}
+    ]
+  }
+]
