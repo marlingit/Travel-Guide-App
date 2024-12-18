@@ -27,11 +27,13 @@ export const Questions = () => {
   const { value, inputProps } = useRadioButtons("option");
   const navigate = useNavigate();
   
-
+  console.log(question);
   const surveyQuestion = surveyQuestions.find((q) => q.id === question);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const formData = Object.fromEntries(new FormData(e.target));
+    console.log(formData);
     if (e.nativeEvent.submitter.value === "next") {
       nextQuestion(value);
     } else if (e.nativeEvent.submitter.value === "previous") {
@@ -78,14 +80,14 @@ export const Questions = () => {
                 </div>
               ))}
               <footer className="flex justify-between pt-14">
-                <button type="submit" value="previous">
+                <button type="submit" value="previous" className={`bg-primary border-primary hover:shadow-primary/50 rounded-full border px-4 py-2 text-center font-semibold text-white hover:shadow-lg ${isFirstQuestion ? "cursor-not-allowed bg-secondary border-secondary hover:shadow-none" : ""}`}>
                   Previous Question
                 </button>
                 {isLastQuestion ?
-                <button type="submit" value="view-results">
+                <button type="submit" value="view-results" className="bg-primary border-primary hover:shadow-primary/50 rounded-full border px-4 py-2 text-center font-semibold text-white hover:shadow-lg">
                   View Results
                 </button> :
-                <button type="submit" value="next">
+                <button type="submit" value="next" className="bg-primary border-primary hover:shadow-primary/50 rounded-full border px-4 py-2 text-center font-semibold text-white hover:shadow-lg">
                   Next Question
                 </button>
                 }
