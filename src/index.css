@@ -4,29 +4,16 @@
 
 @layer base {
   :root {
-    --color-primary: 1 179 228;
-    --color-secondary: 0 112 153;
-    --color-text: 0, 0, 0, 1;
-    --color-text-light: 102, 102, 102, 1;
-    --color-background: #fff;
+    --ff-sans: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+    --ff-handwriting: 'Playwrite CU', cursive;
 
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-    line-height: 1.5;
-    font-weight: 400;
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-
-    color-scheme: light dark;
-
-    color: rgba(var(--color-text));
-    background-color: var(--color-background);
-  }
-
-  .dark {
-    --color-text: 255, 255, 255, 0.87;
-    --color-text-light: 255, 255, 255, 0.6;
+    --color-primary: hsl(193, 15%, 99%);
+    --color-secondary: hsl(193, 15%, 98%);
+    --color-secondary-hover: hsl(193, 15%, 96%);
+    --color-secondary-border: hsl(193, 15%, 90%);
+    --color-accent: #01B3E4;
+    --color-text: rgba(0, 0, 0, 0.87);
+    --color-text-light: rgba(102, 102, 102, 0.87);
   }
 
   * {
@@ -38,6 +25,20 @@
     display: flex;
     min-width: 320px;
     min-height: 100vh;
+
+    font-family: var(--ff-sans);
+    font-size: 100%;
+    line-height: 1.5;
+    font-weight: 400;
+    color: var(--color-text);
+    background-color: var(--color-primary);
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    color-scheme: light dark;
   }
 
   #root {
@@ -81,5 +82,36 @@
 
   #sidebar.is-open.hidden {
     display: none;
+  }
+}
+
+@layer utilities {
+  .spin {
+    animation: spin 20s linear infinite;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .move-plane {
+    animation: move-plane 5s linear forwards;
+  }
+
+  @keyframes move-plane {
+    0% {
+      transform: translate(50vw, 50vw);
+      rotate: -45deg;
+    }
+    100% {
+      transform: translate(0, 1rem);
+      rotate: -45deg;
+    }
+    
   }
 }

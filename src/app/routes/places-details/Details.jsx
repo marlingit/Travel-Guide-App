@@ -37,7 +37,7 @@ export const Details = () => {
       onClick={onDismiss}
     >
       <div
-        className="mx-auto flex h-full max-w-[800px] flex-col overflow-hidden rounded-lg bg-white"
+        className="mx-auto flex h-full max-w-[800px] flex-col overflow-hidden rounded-lg bg-primary"
         onClick={(e) => e.stopPropagation()}
       >
         <header className="border-b bg-inherit p-2 px-4">
@@ -83,7 +83,7 @@ export const Details = () => {
             </li>
             <li>
               <h3 className="text-lg font-semibold">Place Website</h3>
-              <a href={place.websiteUrl} target="_blank" rel="noreferrer" className="text-primary">
+              <a href={place.websiteUrl} target="_blank" rel="noreferrer" className="text-accent">
                 <span className="material-symbols-rounded align-top">open_in_new</span>Show Website
               </a>
             </li>

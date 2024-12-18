@@ -22,7 +22,7 @@ export const ActivitiesRoute = () => {
           <div className="align-center mx-auto grid max-w-7xl grid-cols-none xl:grid-cols-2 px-[4vw] group-odd:pr-4 group-even:pl-4 xl:gap-8">
             <div className="w-fit group-odd:justify-self-end xl:group-odd:order-2">
               <div className="relative">
-                <div className="absolute -z-10 size-full max-h-[400px] translate-y-6 rounded-md bg-primary group-odd:-translate-x-6 group-even:translate-x-6"></div>
+                <div className="absolute -z-10 size-full max-h-[400px] translate-y-6 rounded-md bg-accent group-odd:-translate-x-6 group-even:translate-x-6"></div>
                 <img
                   src={activityImages[data.photoFilename]}
                   alt={data.title}

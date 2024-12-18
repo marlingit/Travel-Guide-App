@@ -66,13 +66,13 @@ export const Questions = () => {
               {surveyQuestion.options.map((option) => (
                 <div
                   key={option.id}
-                  className="flex flex-row items-baseline bg-slate-200 rounded-md hover:bg-slate-300"
+                  className="flex flex-row items-baseline bg-primary border border-transparent rounded-md hover:bg-secondary hover:border-secondary-border"
                 >
                   <input
                     id={option.id}
                     value={option.id}
                     {...inputProps}
-                    className="ml-2 cursor-pointer"
+                    className="ml-2 cursor-pointer accent-accent"
                   />
                   <label htmlFor={option.id} className="text-xl cursor-pointer size-full py-2 pr-4 pl-2">{option.text}</label>
                 </div>

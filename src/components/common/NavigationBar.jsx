@@ -7,9 +7,9 @@ import "material-symbols";
 
 const Logo = () => {
   return (
-    <Link className="flex w-[144px] items-center space-x-1 py-3" to="/">
+    <Link className="inline-flex flex-shrink-0 items-center space-x-1 py-3" to="/">
       <img className="h-8 w-auto" src={logo} alt="Plane" />
-      <span className="text-text text-lg font-bold">Travel Guide</span>
+      <span className="text-text text-lg text-nowrap font-handwriting">Travel Guide</span>
     </Link>
   );
 };
@@ -22,7 +22,7 @@ const Sidebar = ({ navigationList, onClick }) => {
   return (
     <aside
       id="sidebar"
-      className="bg-background is-close fixed inset-0 z-50 flex flex-col overflow-hidden overflow-y-auto lg:hidden"
+      className="bg-primary is-close fixed inset-0 z-50 flex flex-col overflow-hidden overflow-y-auto lg:hidden"
       role="navigation"
       aria-label="Primary Navigation"
     >
@@ -38,7 +38,7 @@ const Sidebar = ({ navigationList, onClick }) => {
       <div className="size-full overflow-y-auto overflow-x-hidden px-4">
         <ul className="text-text m-0 w-full space-y-4 pt-4 text-lg font-semibold tracking-wide">
           {navigationList.map((item) => (
-            <li key={item.to} className="hover:text-primary">
+            <li key={item.to} className="hover:text-accent">
               <Link to={item.to}>{item.name}</Link>
             </li>
           ))}
@@ -87,14 +87,14 @@ export const NavigationBar = () => {
     <>
     <header role="banner">
       <nav
-        className="fixed z-50 h-14 w-full md:h-20 bg-white shadow-md"
+        className="fixed z-50 h-14 w-full md:h-20 bg-primary shadow-md"
         role="navigation"
         aria-label="Primary Navigation"
       >
         <div className="mx-auto flex h-full max-w-7xl justify-between px-[4vw]">
-          <div className="flex items-center">
+          {/* <div className="flex items-center flex-shrink-0"> */}
             <Logo />
-          </div>
+          {/* </div> */}
           <nav className="hidden items-center lg:flex">
             <ul className="my-4 flex space-x-4">
               {navigation.map((item) => (

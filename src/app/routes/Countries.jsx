@@ -6,10 +6,10 @@ export const CountriesRoute = () => {
 
   const handleClick = (e, object) => {
     if (country) {
-      country.element.classList.remove("bg-gradient-to-br", "via-primary", "to-secondary", "from-blue-200", "via-70%");
+      country.element.classList.remove("bg-secondary-border");
     }
     console.log(e.currentTarget);
-    e.currentTarget.classList.add("bg-gradient-to-br", "via-primary", "to-secondary", "from-blue-200", "via-70%");
+    e.currentTarget.classList.add("bg-secondary-border");
     setCountry({object: object, element: e.currentTarget});
   }
 
@@ -30,19 +30,19 @@ export const CountriesRoute = () => {
       <section>
         <div className="mx-auto max-w-7xl px-[4vw]">
           <div className="grid grid-rows-7">
-            <div className="flex flex-row gap-4 overflow-x-scroll px-4">
+            <div className="flex flex-row gap-4 overflow-x-scroll px-4 bg-secondary pb-2">
               {countryData.map((data) => (
-                <div key={data.name} onClick={(e) => handleClick(e, data)} className="hover:shadow-lg hover:shadow-primary/50 my-auto rounded-md overflow-clip p-2">
+                <div key={data.name} onClick={(e) => handleClick(e, data)} className="hover:shadow-lg my-auto rounded-md border border-secondary-border  hover:border-accent hover:shadow-[#01b3e4]/50 overflow-clip p-2 transition-all cursor-pointer">
                   <img
                     src={`https://flagcdn.com/h120/${data.code}.png`}
                     alt={data.name}
-                    className="max-h-[80px] max-w-none"
+                    className="max-h-[80px] max-w-none mx-auto"
                   />
-                  <h2 className="text-center">{data.name}</h2>
+                  <h2 className="text-center text-nowrap">{data.name}</h2>
                 </div>
               ))}
             </div>
-            <div className="row-span-6 bg-gray-300">
+            <div className="row-span-6 bg-secondary-border">
               {country ? (
                 <iframe src={`https://countryreports.org/country/${country.object.filename}`} title="Country Report" className="size-full"></iframe>
               ) : (
