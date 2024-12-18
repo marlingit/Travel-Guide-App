@@ -5,20 +5,23 @@ let SurveyContext = createContext(null);
 
 export const SurveyProvider = ({ children }) => {
   const [question, setQuestion] = useState(1);
+  const [responseCollection, setResponseCollection] = useState([]);
 
   const surveyLength = surveyQuestions.length;
-
-  const submitAnswer = (answer) => {
-    const found = answerArray.find((item) => item.question === question);
-    if (found) {
-      found.answer = answer;
+  
+  const submitAnswer = (surveyResponse) => {
+    const matchingResponse = responseCollection.find((response) => response.question === question);
+    if (matchingResponse) {
+      matchingResponse.answer = surveyResponse;
+      console.log(responseCollection);
       return;
     }
 
-    answerArray.push({
+    responseCollection.push({
       question: question,
-      answer: answer,
+      answer: surveyResponse,
     });
+    console.log(responseCollection);
   }
 
   const nextQuestion = (answer) => {
@@ -40,13 +43,12 @@ export const SurveyProvider = ({ children }) => {
   const viewResults = (answer) => {
     submitAnswer(answer);
     console.log("View Results");
-    console.log(answerArray);
+    console.log(responseCollection);
   }
 
-  const answerArray = [];
 
   return (
-    <SurveyContext.Provider value={{ question, setQuestion, nextQuestion, previousQuestion, viewResults, answerArray }}>
+    <SurveyContext.Provider value={{ question, setQuestion, nextQuestion, previousQuestion, viewResults, answerArray: responseCollection }}>
       {children}
     </SurveyContext.Provider>
   );

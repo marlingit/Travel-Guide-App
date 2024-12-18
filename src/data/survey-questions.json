@@ -7,5 +7,15 @@
       {"id": 2, "text": "Eiffel Tower"},
       {"id": 3, "text": "Statue of Liberty"}
     ]
+  },
+  {
+    "id": 2,
+    "question": "How do you typically prefer to travel when going on vacation?",
+    "options": [
+      {"id": 1, "text": "By plane"},
+      {"id": 2, "text": "By car"},
+      {"id": 3, "text": "By train"},
+      {"id": 4, "text": "By bus or coach"}
+    ]
   }
 ]
