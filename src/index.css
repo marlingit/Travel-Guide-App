@@ -5,6 +5,8 @@
 @layer base {
   :root {
     --ff-sans: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+    --ff-serif: 'Noto Serif', serif;
+    --ff-mono: 'IBM Plex Mono', monospace;
     --ff-handwriting: 'Playwrite CU', cursive;
 
     --color-primary: hsl(193, 15%, 99%);
@@ -12,6 +14,7 @@
     --color-secondary-hover: hsl(193, 15%, 96%);
     --color-secondary-border: hsl(193, 15%, 90%);
     --color-accent: #01B3E4;
+    --color-accent-dark: #172A3A;
     --color-text: rgba(0, 0, 0, 0.87);
     --color-text-light: rgba(102, 102, 102, 0.87);
   }
@@ -20,11 +23,15 @@
     box-sizing: border-box;
   }
 
+  html,
   body {
     margin: 0;
     display: flex;
     min-width: 320px;
     min-height: 100vh;
+    max-width: 100vw;
+    width: 100%;
+    overflow-x: clip;
 
     font-family: var(--ff-sans);
     font-size: 100%;
@@ -48,6 +55,9 @@
 }
 
 @layer utilities {
+  .btn-gradient {
+    
+  }
   .material-symbols-rounded.text-lg {
     font-size: 1.125rem;
   }
@@ -100,16 +110,16 @@
   }
 
   .move-plane {
-    animation: move-plane 5s linear forwards;
+    animation: move-plane 2s ease-out forwards;
   }
 
   @keyframes move-plane {
     0% {
-      transform: translate(50vw, 50vw);
+      transform: translate(0, 50vh);
       rotate: -45deg;
     }
     100% {
-      transform: translate(0, 1rem);
+      transform: translate(-1rem, 0rem);
       rotate: -45deg;
     }
     
