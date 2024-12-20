@@ -1,6 +1,6 @@
 import attractionImages from "@/assets/attraction-images";
 import { useState } from "react";
-import { LinkButton } from "@/components/ui/link-button";
+import { BlankLinkButton } from "@/components/ui/link-button";
 export const AttractionsRoute = () => {
   const [imageId, setImageId] = useState(0);
 
@@ -21,9 +21,9 @@ export const AttractionsRoute = () => {
             <p className="mb-12 text-center text-clamp-lg-3xl font-semibold text-text-light z-10">
               Best Travel Attractions in the World!
             </p>
-            <LinkButton to="survey" className="px-14 py-5 mx-auto text-nowrap z-10">
+            <BlankLinkButton to="survey" className="px-12 py-5 mx-auto text-nowrap z-10 bg-accent-dark text-primary rounded-full font-semibold hover:bg-accent transition-colors duration-150 ease-linear">
               Start Survey
-            </LinkButton>
+            </BlankLinkButton>
           </div>
         </div>
       </section>

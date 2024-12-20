@@ -1,5 +1,5 @@
 import landingImg from "@/assets/landing-image.jpg";
-import { LinkButton } from "@/components/ui/link-button";
+import { BlankLinkButton } from "@/components/ui/link-button";
 
 import logo from "@/assets/logo.svg";
 
@@ -11,33 +11,15 @@ export const LandingRoute = () => {
           <div className="max-w-96 flex flex-col sm:block">
             <h1 className="text-clamp-4xl-6xl text-center sm:text-left mb-4"><strong className="bg-clip-text text-transparent bg-gradient-to-br from-accent to-accent-dark from-60%">Explore</strong> to your hearts content.</h1>
             <h2 className="text-lg text-center md:text-xl sm:text-left text-text-light mt-6">Find all the information you can ask for about popular vacation spots.</h2>
-            <LinkButton to="/places" className="px-12 py-5 m-auto text-nowrap mt-8 ">
+            <BlankLinkButton to="/places" className="px-12 py-5 m-auto text-nowrap mt-8 bg-accent-dark text-primary rounded-full font-semibold hover:bg-accent transition-colors duration-150 ease-linear">
               Start Exploring
-            </LinkButton>
+            </BlankLinkButton>
           </div>
           <div className="relative w-full sm:w-[65vw] max-w-[700px] aspect-square flex-shrink-0 sm:-mr-24">
             <img src={logo} alt="logo" className="absolute z-10 translate-y-4 -rotate-45 move-plane" />
             <Circle />
           </div>
         </div>
-        {/* <div className="mx-auto flex max-w-7xl flex-col space-y-4 px-[4vw] lg:items-center">
-          <header className="flex flex-col items-center justify-center bg-cover bg-center bg-[" style={{backgroundImage: `url(${landingImg})`}}>
-            <div className="grid grid-cols-1 lg:grid-cols-3 px-[3vw] text-white backdrop-blur backdrop-brightness-75 mx-8 lg:mx-36 my-16 py-6">
-              <section className="lg:col-span-2">
-                <h1 className="text-clamp-4xl-6xl text-center font-semibold mb-4">
-                  Find your next vacation spot!
-                </h1>
-                <p className="text-clamp-lg-3xl text-center font-medium mb-16">
-                  The perfect app to explore new places, all from the comfort of
-                  your home.
-                </p>
-              </section>
-              <LinkButton to="/places" className="px-12 py-5 m-auto text-nowrap">
-                Start Exploring
-              </LinkButton>
-            </div>
-          </header>
-        </div> */}
       </section>
       <section>
         <div className="mx-auto max-w-7xl px-[4vw]"></div>

@@ -77,6 +77,7 @@ export const Questions = () => {
                   <label htmlFor={option.id} className="text-xl cursor-pointer size-full py-2 pr-4 pl-2">{option.text}</label>
                 </div>
               ))}
+              <label><input type="radio" /> Hello</label>
               <footer className="flex justify-between pt-14">
                 <button type="submit" value="previous">
                   Previous Question
