@@ -4,11 +4,9 @@
 
 ### Error Boundary
 
-Fix the Error Boundary so that it displays the NotFound Route on incorrect route names. However, allow the Error Boundary to catch all other errors that aren't related to route names.
+[] - Fix the Error Boundary so that it displays the NotFound Route on incorrect route names. However, allow the Error Boundary to catch all other errors that aren't related to route names.
 
 ## Attraction Route
-
-### Survey Authorization
 
 [] - Change label and inputs from being siblings to the input being the child of the label.
 
@@ -24,4 +22,15 @@ Fix the Error Boundary so that it displays the NotFound Route on incorrect route
 
 [] - Change the style of the selected answer in the results screen.
 
-[] - Change the style of the options.
+[x] - Change the style of the options.
+
+[] - Implement a suspense lazy load using a lower resolution picture.
+
+## Activities Route
+
+[] - Figure out how to get colored block behind image and caption.
+[] - Implement Lazy Loading on scroll using the Intersection Observer API.
+
+## Places Route
+
+[] - Implement Lazy Loading on scroll using the Intersection Observer API.

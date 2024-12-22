@@ -4,7 +4,7 @@ export const Button = ({
   symbol,
   size = "md",
   children,
-  buttonStyle,
+  buttonStyle
 }) => {
   return (
     <button className={`rounded-md text-center ${buttonStyle} flex items-center my-auto`} onClick={onClick}>

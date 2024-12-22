@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
+import { memo } from "react";
 
-export const BlankLinkButton = ({ children, to, className, disabled }) => {
+export const BlankLinkButton = memo(({ children, to, className, disabled }) => {
   return (
     <Link
       to={to}
@@ -10,4 +11,4 @@ export const BlankLinkButton = ({ children, to, className, disabled }) => {
       {children}
     </Link>
   );
-};
+});

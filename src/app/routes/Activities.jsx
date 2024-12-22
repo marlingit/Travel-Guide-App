@@ -19,10 +19,10 @@ export const ActivitiesRoute = () => {
       </section>
       {activityData.map((data) => (
         <section className="group py-12" key={data.id}>
-          <div className="align-center mx-auto grid max-w-7xl grid-cols-none xl:grid-cols-2 px-[4vw] group-odd:pr-4 group-even:pl-4 xl:gap-8">
+          <div className="align-center mx-auto grid max-w-7xl grid-cols-none px-[4vw] group-odd:pr-4 group-even:pl-4 xl:grid-cols-2 xl:gap-8">
             <div className="w-fit group-odd:justify-self-end xl:group-odd:order-2">
               <div className="relative">
-                <div className="absolute -z-10 size-full max-h-[400px] translate-y-6 rounded-md bg-accent group-odd:-translate-x-6 group-even:translate-x-6"></div>
+                <div className="absolute  size-full max-h-[400px] translate-y-6 rounded-md bg-accent z-0 group-odd:-translate-x-6 group-even:translate-x-6"></div>
                 <img
                   src={activityImages[data.photoFilename]}
                   alt={data.title}
@@ -33,10 +33,23 @@ export const ActivitiesRoute = () => {
                 {data.location}
               </p>
             </div>
-            <div className="mx-auto mt-8 max-w-[30rem] lg:max-w-[32rem] group-odd:mr-4 group-even:ml-4 lg:group-odd:mr-auto lg:group-even:ml-auto xl:m-0">
-              <h2 className="text-2xl font-semibold xl:text-5xl mb-4">{data.title}</h2>
+            <div className="mx-auto mt-8 max-w-[30rem] group-odd:mr-4 group-even:ml-4 lg:max-w-[32rem] lg:group-odd:mr-auto lg:group-even:ml-auto xl:m-0">
+              <h2 className="mb-4 text-2xl font-semibold xl:text-5xl">
+                {data.title}
+              </h2>
               <p className="mb-2 text-lg">{data.description}</p>
-              <a href={data.websiteUrl} className="text-primary text-lg hover:underline">Learn More <span className="material-symbols-rounded align-text-bottom" style={{fontSize: 20}}>open_in_new</span></a>
+              <a
+                href={data.websiteUrl}
+                className="text-lg text-primary hover:underline"
+              >
+                Learn More{" "}
+                <span
+                  className="material-symbols-rounded align-text-bottom"
+                  style={{ fontSize: 20 }}
+                >
+                  open_in_new
+                </span>
+              </a>
             </div>
           </div>
         </section>
@@ -56,7 +69,6 @@ export const ActivitiesRoute = () => {
             </p>
           </footer>
         </div>
-          
       </section>
     </main>
   );
