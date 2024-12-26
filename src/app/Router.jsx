@@ -1,16 +1,16 @@
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
-import { LandingRoute } from "./routes/Landing";
-import { PlacesRoute } from "./routes/Places";
-import { Details } from "./routes/places-details/Details";
-import { AttractionsRoute } from "./routes/Attractions";
-import { CountriesRoute } from "./routes/Countries";
-import { ActivitiesRoute } from "./routes/Activities";
-import { BeachesRoute } from "./routes/Beaches";
-import { NotFoundRoute } from "./routes/NotFound";
-import { Questions } from "./routes/Questions";
-import { Results } from "./routes/Results";
-import { NavigationBar } from "@/components/common";
-import { SurveyLayout } from "@/components/layouts";
+import { LandingRoute } from "./routes/Landing.jsx";
+import { PlacesRoute } from "./routes/Places.jsx";
+import { Details } from "./routes/places-details/Details.jsx";
+import { AttractionsRoute } from "./routes/Attractions.jsx";
+import { CountriesRoute } from "./routes/Countries.jsx";
+import { ActivitiesRoute } from "./routes/Activities.jsx";
+import { BeachesRoute } from "./routes/Beaches.jsx";
+import { NotFoundRoute } from "./routes/NotFound.jsx";
+import { Survey } from "./routes/Survey.jsx";
+import { Results } from "./routes/Results.jsx";
+import { NavigationBar } from "@/components/common/NavigationBar.jsx";
+import { SurveyLayout } from "@/components/layouts/SurveyLayout.jsx";
 
 export const AppRouter = () => {
   const router = createBrowserRouter([
@@ -59,7 +59,7 @@ export const AppRouter = () => {
       children: [
         {
           path: "/attractions/survey/",
-          Component: Questions,
+          Component: Survey,
           ErrorBoundary: NotFoundRoute,
         },
         {

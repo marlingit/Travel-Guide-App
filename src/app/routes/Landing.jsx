@@ -1,5 +1,5 @@
 import landingImg from "@/assets/landing-image.jpg";
-import { BlankLinkButton } from "@/components/ui/link-button";
+import { BlankLinkButton } from "@/components/ui/link-button/BlankLinkButton";
 
 import logo from "@/assets/logo.svg";
 

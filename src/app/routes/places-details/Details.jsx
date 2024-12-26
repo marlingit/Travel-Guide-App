@@ -1,7 +1,7 @@
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import places from "@/lib/places.js";
 import { useEffect } from "react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button/Button.jsx";
 
 export const Details = () => {
   const { id } = useParams();

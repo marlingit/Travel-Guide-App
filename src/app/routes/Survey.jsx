@@ -4,40 +4,26 @@ import "material-symbols";
 import { useState, memo } from "react";
 import { useSurvey } from "@/app/providers/SurveyProvider";
 
-const useRadioButtons = (name) => {
-  const [value, setValue] = useState(null);
+export const Survey = () => {
+  const [question, setQuestion] = useState(1);
 
-  const handleChange = (e) => {
-    setValue(e.target.value);
-  };
 
-  const inputProps = {
-    name,
-    type: "radio",
-    onChange: handleChange,
-  };
-
-  return { value, inputProps };
-};
-
-export const Questions = () => {
-  const { question, setQuestion, nextQuestion, previousQuestion, viewResults } =
+  const { submitAnswer, getAnswer } =
     useSurvey();
-  const { value, inputProps } = useRadioButtons("option");
-  const navigate = useNavigate();
 
   const surveyQuestion = surveyQuestions.find((q) => q.id === question);
+  const selectedAnswer = getAnswer(question);
+  console.log(selectedAnswer);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (e.nativeEvent.submitter.value === "next") {
-      nextQuestion(value);
-    } else if (e.nativeEvent.submitter.value === "previous") {
-      previousQuestion(value);
-    } else if (e.nativeEvent.submitter.value === "view-results") {
-      viewResults(value);
-      navigate("results");
-    }
+
+    console.log(e);
+
+    const formData = new FormData(e.target);
+    const formJson = Object.fromEntries(formData.entries());
+    console.log(formJson);
+    submitAnswer(question, formJson.answer);
   };
 
   const isFirstQuestion = question <= 1;
@@ -63,29 +49,28 @@ export const Questions = () => {
             <form
               className="flex w-full flex-col space-y-1 self-start"
               onSubmit={handleSubmit}
+              method="post"
             >
               {surveyQuestion.options.map((option) => (
                 <div
                   key={option.id}
                   className="flex flex-row items-baseline rounded-md border border-transparent bg-primary hover:border-secondary-border hover:bg-secondary"
                 >
-                  <input
-                    id={option.id}
-                    value={option.id}
-                    {...inputProps}
-                    className="ml-2 cursor-pointer accent-accent"
-                  />
                   <label
                     htmlFor={option.id}
                     className="size-full cursor-pointer py-2 pl-2 pr-4 text-xl"
                   >
+                    <input
+                      id={option.id}
+                      value={option.id}
+                      name="answer"
+                      type="radio"
+                      className="ml-2 cursor-pointer accent-accent"
+                    />
                     {option.text}
                   </label>
                 </div>
               ))}
-              <label>
-                <input type="radio" /> Hello
-              </label>
               <footer className="flex justify-between pt-14">
                 <PreviousButton isFirstQuestion={isFirstQuestion} />
                 <NextButton isLastQuestion={isLastQuestion} />
@@ -101,19 +86,48 @@ export const Questions = () => {
 const PreviousButton = memo(function PreviousButton({ isFirstQuestion }) {
   if (isFirstQuestion) {
     return (
-      <button type="submit" className="inline-block px-8 py-4 rounded-full bg-secondary-border text-text font-semibold text-lg text-nowrap cursor-not-allowed" disabled>
+      <button
+        type="submit"
+        value="previous"
+        className="inline-block cursor-not-allowed text-nowrap rounded-full bg-secondary-border px-8 py-4 text-lg font-semibold text-text"
+        disabled
+      >
         Previous Question
       </button>
     );
   }
 
-  return <button type="submit" className="inline-block px-8 py-4 rounded-full bg-accent-dark text-white font-semibold text-lg hover:bg-accent text-nowrap ">Previous Question</button>;
+  return (
+    <button
+      type="submit"
+      value="previous"
+      className="inline-block text-nowrap rounded-full bg-accent-dark px-8 py-4 text-lg font-semibold text-white hover:bg-accent"
+    >
+      Previous Question
+    </button>
+  );
 });
 
 const NextButton = memo(function NextButton({ isLastQuestion }) {
   if (isLastQuestion) {
-    return <button type="submit" className="inline-block px-8 py-4 rounded-full bg-accent-dark text-white font-semibold text-lg hover:bg-accent text-nowrap ">View Results</button>;
+    return (
+      <button
+        type="submit"
+        value="results"
+        className="inline-block text-nowrap rounded-full bg-accent-dark px-8 py-4 text-lg font-semibold text-white hover:bg-accent"
+      >
+        View Results
+      </button>
+    );
   }
 
-  return <button type="submit" className="inline-block px-8 py-4 rounded-full bg-accent-dark text-white font-semibold text-lg hover:bg-accent text-nowrap ">Next Question</button>;
+  return (
+    <button
+      type="submit"
+      value="next"
+      className="inline-block text-nowrap rounded-full bg-accent-dark px-8 py-4 text-lg font-semibold text-white hover:bg-accent"
+    >
+      Next Question
+    </button>
+  );
 });

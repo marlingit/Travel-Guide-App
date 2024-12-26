@@ -1,5 +1,5 @@
-import { GridLayout } from "@/components/layouts";
-import { Card } from "@/components/ui/card";
+import { GridLayout } from "@/components/layouts/GridLayout.jsx";
+import { Card } from "@/components/ui/card/Card.jsx";
 import places from "@/lib/places.js";
 import { Outlet, useNavigate } from "react-router-dom";
 import "material-symbols";

@@ -1,6 +1,6 @@
 import attractionImages from "@/assets/attraction-images";
 import { useState } from "react";
-import { BlankLinkButton } from "@/components/ui/link-button";
+import { BlankLinkButton } from "@/components/ui/link-button/BlankLinkButton";
 export const AttractionsRoute = () => {
   const [imageId, setImageId] = useState(0);
 

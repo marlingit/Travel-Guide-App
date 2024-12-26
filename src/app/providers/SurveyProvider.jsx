@@ -1,28 +1,26 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState } from "react";
 import surveyQuestions from "@/data/survey-questions.json";
 
 let SurveyContext = createContext(null);
 
 export const SurveyProvider = ({ children }) => {
-  const [question, setQuestion] = useState(1);
-  const [responseCollection, setResponseCollection] = useState([]);
+  const [surveyDict, setSurveyDict] = useState({});
 
   const surveyLength = surveyQuestions.length;
-  
-  const submitAnswer = (surveyResponse) => {
-    const matchingResponse = responseCollection.find((response) => response.question === question);
-    if (matchingResponse) {
-      matchingResponse.answer = surveyResponse;
-      console.log(responseCollection);
-      return;
-    }
 
-    responseCollection.push({
-      question: question,
-      answer: surveyResponse,
+  const submitAnswer = (question, answer) => {
+    setSurveyDict((prev) => {
+      return {
+        ...prev,
+        [question]: answer,
+      };
     });
-    console.log(responseCollection);
-  }
+    console.log(surveyDict);
+  };
+
+  const getAnswer = (question) => {
+    return surveyDict[question];
+  };
 
   const nextQuestion = (answer) => {
     if (question === surveyLength) {
@@ -43,18 +41,22 @@ export const SurveyProvider = ({ children }) => {
   const viewResults = (answer) => {
     submitAnswer(answer);
     console.log("View Results");
-    console.log(responseCollection);
-  }
-
+    console.log(surveyDict);
+  };
 
   return (
-    <SurveyContext.Provider value={{ question, setQuestion, nextQuestion, previousQuestion, viewResults, answerArray: responseCollection }}>
+    <SurveyContext.Provider
+      value={{
+        surveyDict,
+        submitAnswer,
+        getAnswer,
+      }}
+    >
       {children}
     </SurveyContext.Provider>
   );
-}
+};
 
 export const useSurvey = () => {
   return useContext(SurveyContext);
 };
-

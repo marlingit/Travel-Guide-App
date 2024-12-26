@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import logo from "@/assets/logo.svg";
-import { Button } from "@/components/ui/button";
-import { LinkButton } from "@/components/ui/link-button";
+import { Button } from "@/components/ui/button/Button.jsx";
+import { LinkButton } from "@/components/ui/link-button/LinkButton.jsx";
 import "material-symbols";
 
 const Logo = () => {
