@@ -22,7 +22,7 @@ export const ActivitiesRoute = () => {
           <div className="align-center mx-auto grid max-w-7xl grid-cols-none px-[4vw] group-odd:pr-4 group-even:pl-4 xl:grid-cols-2 xl:gap-8">
             <div className="w-fit group-odd:justify-self-end xl:group-odd:order-2">
               <div className="relative">
-                <div className="absolute  size-full max-h-[400px] translate-y-6 rounded-md bg-accent z-0 group-odd:-translate-x-6 group-even:translate-x-6"></div>
+                <div className="absolute  size-full max-h-[400px] translate-y-6 rounded-md bg-accent -z-10 group-odd:-translate-x-6 group-even:translate-x-6"></div>
                 <img
                   src={activityImages[data.photoFilename]}
                   alt={data.title}
@@ -40,7 +40,7 @@ export const ActivitiesRoute = () => {
               <p className="mb-2 text-lg">{data.description}</p>
               <a
                 href={data.websiteUrl}
-                className="text-lg text-primary hover:underline"
+                className="text-lg text-accent hover:underline"
               >
                 Learn More{" "}
                 <span
@@ -55,20 +55,18 @@ export const ActivitiesRoute = () => {
         </section>
       ))}
       <section>
-        <div className="mx-auto max-w-7xl px-[4vw] pt-16">
-          <footer className="text-center italic text-text-light">
-            <p>
-              <span className="material-symbols-rounded align-top">info</span>{" "}
-              Travel Activities in the World data and photos are taken from:{" "}
-              <a
-                className="text-primary hover:underline"
-                href="https://tourscanner.com"
-              >
-                TourScanner
-              </a>
-            </p>
-          </footer>
-        </div>
+        <footer className="mx-auto max-w-7xl px-[4vw] pt-16">
+          <p className="text-center italic text-text-light">
+            <span className="material-symbols-rounded align-top">info</span>{" "}
+            Travel Activities in the World data and photos are taken from:{" "}
+            <a
+              className="text-accent hover:underline"
+              href="https://tourscanner.com"
+            >
+              TourScanner
+            </a>
+          </p>
+        </footer>
       </section>
     </main>
   );

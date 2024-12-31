@@ -1,55 +1,42 @@
 import { createContext, useContext, useState } from "react";
-import surveyQuestions from "@/data/survey-questions.json";
 
 let SurveyContext = createContext(null);
 
 export const SurveyProvider = ({ children }) => {
-  const [surveyDict, setSurveyDict] = useState({});
+  const [surveyList, setSurveyList] = useState([]);
 
-  const surveyLength = surveyQuestions.length;
-
-  const submitAnswer = (question, answer) => {
-    setSurveyDict((prev) => {
-      return {
-        ...prev,
-        [question]: answer,
-      };
-    });
-    console.log(surveyDict);
-  };
-
-  const getAnswer = (question) => {
-    return surveyDict[question];
-  };
-
-  const nextQuestion = (answer) => {
-    if (question === surveyLength) {
-      return;
+  const submitAnswer = (questionId, answerId) => {
+    let changed = false;
+    setSurveyList(
+      surveyList.map((question) => {
+        if (question.id === questionId) {
+          changed = true;
+          return { ...question, answerId: answerId };
+        }
+        return question;
+      }),
+    );
+    if (!changed) {
+      setSurveyList([...surveyList, { id: questionId, answerId: answerId }]);
     }
-    submitAnswer(answer);
-    setQuestion((prev) => prev + 1);
+    console.log(surveyList);
   };
 
-  const previousQuestion = (answer) => {
-    if (question === 1) {
-      return;
-    }
-    submitAnswer(answer);
-    setQuestion((prev) => prev - 1);
+  const getAnswer = (questionId) => {
+    return surveyList.find((q) => q.id === questionId)?.answerId;
   };
 
-  const viewResults = (answer) => {
-    submitAnswer(answer);
-    console.log("View Results");
-    console.log(surveyDict);
+  const resetList = () => {
+    setSurveyList([]);
   };
 
   return (
     <SurveyContext.Provider
       value={{
-        surveyDict,
+        surveyList: surveyList,
         submitAnswer,
         getAnswer,
+        resetList,
       }}
     >
       {children}

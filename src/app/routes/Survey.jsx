@@ -6,14 +6,12 @@ import { useSurvey } from "@/app/providers/SurveyProvider";
 
 export const Survey = () => {
   const [question, setQuestion] = useState(1);
+  const [answer, setAnswer] = useState("");
+  const navigate = useNavigate();
 
-
-  const { submitAnswer, getAnswer } =
-    useSurvey();
+  const { submitAnswer, getAnswer } = useSurvey();
 
   const surveyQuestion = surveyQuestions.find((q) => q.id === question);
-  const selectedAnswer = getAnswer(question);
-  console.log(selectedAnswer);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,7 +21,18 @@ export const Survey = () => {
     const formData = new FormData(e.target);
     const formJson = Object.fromEntries(formData.entries());
     console.log(formJson);
-    submitAnswer(question, formJson.answer);
+    submitAnswer(question, Number(formJson.answer));
+    if (e.nativeEvent.submitter.value === "next") {
+      setQuestion((prev) => prev + 1);
+      setAnswer(getAnswer(question + 1));
+    }
+    if (e.nativeEvent.submitter.value === "previous") {
+      setQuestion((prev) => prev - 1);
+      setAnswer(getAnswer(question - 1));
+    }
+    if (e.nativeEvent.submitter.value === "results") {
+      navigate("results");
+    }
   };
 
   const isFirstQuestion = question <= 1;
@@ -65,6 +74,8 @@ export const Survey = () => {
                       value={option.id}
                       name="answer"
                       type="radio"
+                      checked={answer === option.id}
+                      onChange={(e) => setAnswer(Number(e.target.value))}
                       className="ml-2 cursor-pointer accent-accent"
                     />
                     {option.text}

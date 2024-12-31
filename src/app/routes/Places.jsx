@@ -40,22 +40,18 @@ export const PlacesRoute = () => {
           </GridLayout>
         </div>
       </section>
-      <section>
-        <div className="mx-auto max-w-7xl px-[4vw] pt-16">
-          <footer className="text-center italic text-text-light">
-            <p>
-              <span className="material-symbols-rounded align-top">info</span>{" "}
-              World's Best Places to Visit data and rankings are taken from:{" "}
-              <a
-                className="text-primary hover:underline"
-                href="https://travel.usnews.com"
-              >
-                U.S. News Travel
-              </a>
-            </p>
-          </footer>
-        </div>
-      </section>
+      <footer className="mx-auto max-w-7xl px-[4vw] pt-16">
+        <p className="text-center italic text-text-light">
+          <span className="material-symbols-rounded align-top">info</span>{" "}
+          World's Best Places to Visit data and rankings are taken from:{" "}
+          <a
+            className="text-accent hover:underline"
+            href="https://travel.usnews.com"
+          >
+            U.S. News Travel
+          </a>
+        </p>
+      </footer>
       <Outlet />
     </main>
   );

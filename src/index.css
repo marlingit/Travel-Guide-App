@@ -39,7 +39,6 @@
     line-height: 1.5;
     font-weight: 400;
     color: var(--color-text);
-    background-color: var(--color-primary);
 
     font-synthesis: none;
     text-rendering: optimizeLegibility;
@@ -47,6 +46,10 @@
     -moz-osx-font-smoothing: grayscale;
 
     color-scheme: light dark;
+  }
+
+  html {
+    background-color: var(--color-primary);
   }
 
   #root {
