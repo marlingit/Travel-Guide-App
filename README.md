@@ -24,7 +24,7 @@ Travel Guide uses npm for package management.
 
 ## Credits
 
-This project is based off of a tutorial in Swift for iOS mobile software design created by Prof. Osman Balci. All credit for the original idea and design goes to him.
+This project is based off of a tutorial in Swift for iOS mobile software design created by [Prof. Osman Balci](https://manta.cs.vt.edu/balci/). All credit for the original idea and design goes to him.
 
 ## License
 [MIT](/LICENSE)
